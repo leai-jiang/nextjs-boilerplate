@@ -1,0 +1,9 @@
+.ourcustomer__card {
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(180deg, rgba(41, 127, 204, 0) 50%, rgba(41, 127, 204, 0.1) 100%);
+  box-shadow: 0px 4px 16px 0px #1D6CB214;
+
+}
+.ourcustomer__card__icon {
+  border: 10px solid #297FCC1A;
+  box-shadow: 0px 4px 16px 0px #1D6CB21A;
+}

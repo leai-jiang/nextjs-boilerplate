@@ -1,164 +1,252 @@
 import Image from "next/image";
-
-const PageTitle = ({ children }: { children: React.ReactNode }) => (
-    <div className="relative py-24 bg-gray-900 text-center">
-        <div 
-            className="absolute inset-0 z-0 opacity-10" 
-            style={{ 
-                backgroundImage: `url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="%23fff"><path d="M0,50 C40,120 60,-20 100,50 L100,100 L0,100 Z"/></svg>')`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'bottom',
-                backgroundSize: '100% auto',
-            }} 
-        />
-        <div className="relative z-10">
-            <h1 className="text-5xl font-bold text-white tracking-wider">{children}</h1>
-            <div className="mt-4 w-24 h-1 bg-lime-400 mx-auto" />
-        </div>
-    </div>
-);
-
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-    <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">{children}</h2>
-        <div className="mt-4 w-20 h-1 bg-lime-400 mx-auto" />
-    </div>
-);
-
-const IctCategory = ({ title, items }: { title: string; items: string[] }) => (
-    <div className="border-t-2 border-gray-200 pt-6">
-        <h4 className="text-cyan-600 font-bold mb-4 text-center">{title}</h4>
-        <div className="flex flex-wrap justify-center gap-3">
-            {items.map(item => (
-                <span key={item} className="bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm shadow-sm hover:bg-cyan-100 transition-colors">
-                    {item}
-                </span>
-            ))}
-        </div>
-    </div>
-);
-
-const PartnerLogo = ({ src, alt }: { src: string; alt: string }) => (
-    <div className="bg-white p-4 rounded-full shadow-md w-32 h-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-        <Image src={src} alt={alt} width={100} height={50} className="object-contain"/>
-    </div>
-);
+import Banner from "../components/Banner";
+import SectionTitle from "../components/SectionTitle";
 
 
 const BusinessPage = () => {
     return (
-        <div className="bg-white">
-            <PageTitle>主营业务</PageTitle>
-
+        <>
+            <Banner
+              image="/business_banner.jpg"
+              title="聚力精进技术，同心服务客户"
+              subtitle="以客户需求为导向，提供个性化解决方案"
+              buttonText="查看案例"
+              buttonUrl="/cases"
+            />
             <main>
                 {/* ICT集成 Section */}
-                <section className="py-24 bg-gray-50">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>ICT集成</SectionTitle>
-                        <div className="bg-white p-8 rounded-xl shadow-lg space-y-8 border border-gray-200">
-                            <IctCategory title="基础架构" items={['HPC超算', '私有云', '申泰', 'X86主机', '信创应用', '智能存储', '备份产品']} />
-                            <IctCategory title="云数据中心&虚拟化" items={['虚拟化', '超融合', '信创虚拟化', '桌面虚拟化', '云视频', '智慧屏', '信创云盘']} />
-                            <IctCategory title="IT运维&审计" items={['堡垒机', '网管', '虚拟化', '桌面虚拟化', '服务器', 'AI计算平台', '大数据中心']} />
-                            <IctCategory title="网络" items={['WIFI无线', '园区网', '数据中心网络', 'SD-WAN', '5G网络', '光网络', '弹性裸金属']} />
+                <section className="py-[96px] bg-gray-50">
+                    <SectionTitle title="ICT集成" className="mb-[24px]" />
+                    <div className="container mx-auto px-[16px] w-[1120px]">
+                        <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-8 md:p-12 max-w-5xl mx-auto">
+                            <div className="text-center mb-8">
+                                <div className="text-[20px] md:text-[22px] font-bold text-[#2CA3FA] mb-2">ICT集成业务架构</div>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                                {/* 网络 */}
+                                <div className="bg-[#F7FAFE] rounded-xl p-6 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold text-lg mb-4">网络</div>
+                                    <div className="flex flex-col gap-3 w-full">
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">Wi-Fi无线</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">园区网络</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">数据中心网络</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">SD-WAN</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">SDN网络</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">光网络</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">网络监控与管理</div>
+                                    </div>
+                                </div>
+                                {/* IT&云视频 */}
+                                <div className="bg-[#F7FAFE] rounded-xl p-6 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold text-lg mb-4">IT&云视频</div>
+                                    <div className="flex flex-col gap-3 w-full">
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">服务器</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">存储</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">虚拟化</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">桌面云</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">超融合</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">云计算平台</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">大数据平台</div>
+                                    </div>
+                                </div>
+                                {/* 视频监控&智能协作 */}
+                                <div className="bg-[#F7FAFE] rounded-xl p-6 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold text-lg mb-4">视频监控&智能协作</div>
+                                    <div className="flex flex-col gap-3 w-full">
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">摄像机</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">视频云</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">智能视频</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">视频监控</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">云视频</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">智慧屏</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">视频会议</div>
+                                    </div>
+                                </div>
+                                {/* 智能终端 */}
+                                <div className="bg-[#F7FAFE] rounded-xl p-6 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold text-lg mb-4">智能终端</div>
+                                    <div className="flex flex-col gap-3 w-full">
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">台式机</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">笔记本</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">平板</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">打印机</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">智能穿戴</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">智能音箱</div>
+                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium">智能产品</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
                 
                 {/* 信息安全 Section */}
-                <section className="py-24">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>信息安全</SectionTitle>
-                        <div className="text-center p-8 border rounded-lg bg-white shadow-lg">
-                           <p className="text-gray-600">此部分图表结构复杂，将使用占位符代替，后续可填充具体内容。</p>
-                           <Image src="https://via.placeholder.com/1200x600.png?text=Information+Security+Diagram" alt="信息安全图表" width={1200} height={600} className="mt-8 mx-auto rounded-md" />
+                <section className="py-[96px]">
+                    <div className="container mx-auto px-[16px]">
+                        <SectionTitle title="信息安全" />
+                        <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-6 md:p-10 max-w-6xl mx-auto mt-8 w-[1120px]">
+                            {/* 顶部大标题 */}
+                            <div className="bg-[#2CA3FA] text-white text-center text-lg md:text-xl font-bold rounded-t-xl py-3 mb-4">安全咨询</div>
+                            {/* 体系与解决方案 */}
+                            <div className="flex flex-col md:flex-row gap-4 mb-6">
+                                {/* 左侧竖排 */}
+                                <div className="flex md:flex-col items-center md:items-start md:justify-center md:w-[80px] shrink-0">
+                                    <span className="text-[#2CA3FA] font-bold text-base md:text-lg tracking-widest md:rotate-[-90deg] md:mb-0 mb-2">解决方案</span>
+                                </div>
+                                {/* 体系与方案内容 */}
+                                <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    {/* 安全策略体系 */}
+                                    <div className="bg-[#F7FAFE] rounded-xl p-4 flex flex-col items-center">
+                                        <div className="text-[#2CA3FA] font-bold mb-2">安全策略体系</div>
+                                        <div className="flex flex-col gap-2 w-full">
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">安全态势感知解决方案</div>
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">威胁情报管理解决方案</div>
+                                        </div>
+                                    </div>
+                                    {/* 安全组织体系 */}
+                                    <div className="bg-[#F7FAFE] rounded-xl p-4 flex flex-col items-center">
+                                        <div className="text-[#2CA3FA] font-bold mb-2">安全组织体系</div>
+                                        <div className="flex flex-col gap-2 w-full">
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">等级保护解决方案</div>
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">三位一体机/UDDOS</div>
+                                        </div>
+                                    </div>
+                                    {/* 安全运行体系 */}
+                                    <div className="bg-[#F7FAFE] rounded-xl p-4 flex flex-col items-center">
+                                        <div className="text-[#2CA3FA] font-bold mb-2">安全运行体系</div>
+                                        <div className="flex flex-col gap-2 w-full">
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">数据安全解决方案</div>
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">云计算安全解决方案</div>
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">勒索病毒防护解决方案</div>
+                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">零信任安全解决方案</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* 五大安全领域 */}
+                            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                                {/* 网络安全 */}
+                                <div className="bg-[#E6F2FE] rounded-xl p-4 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold mb-2">网络安全</div>
+                                    <div className="text-xs text-[#2CA3FA] leading-relaxed text-center">
+                                        下一代防火墙<br />安全接入网关<br />入侵检测系统<br />入侵防御系统<br />流量监控系统<br />ANTI-DDOS<br />上网行为管理
+                                    </div>
+                                </div>
+                                {/* 系统安全 */}
+                                <div className="bg-[#E6F2FE] rounded-xl p-4 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold mb-2">系统安全</div>
+                                    <div className="text-xs text-[#2CA3FA] leading-relaxed text-center">
+                                        系统安全<br />终端检测系统<br />移动终端管理<br />网络安全准入系统<br />SSLVPN<br />安全传输加密认证系统
+                                    </div>
+                                </div>
+                                {/* 应用安全 */}
+                                <div className="bg-[#E6F2FE] rounded-xl p-4 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold mb-2">应用安全</div>
+                                    <div className="text-xs text-[#2CA3FA] leading-relaxed text-center">
+                                        应用漏洞扫描系统<br />渗透测试系统<br />WEB防篡改系统<br />网页防泄密系统<br />WEB应用防火墙
+                                    </div>
+                                </div>
+                                {/* 数据安全 */}
+                                <div className="bg-[#E6F2FE] rounded-xl p-4 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold mb-2">数据安全</div>
+                                    <div className="text-xs text-[#2CA3FA] leading-relaxed text-center">
+                                        数据库安全审计<br />数据库防火墙<br />数据脱敏系统<br />特权账号管理系统<br />备份一体机
+                                    </div>
+                                </div>
+                                {/* 云安全 */}
+                                <div className="bg-[#E6F2FE] rounded-xl p-4 flex flex-col items-center">
+                                    <div className="text-[#2CA3FA] font-bold mb-2">云安全</div>
+                                    <div className="text-xs text-[#2CA3FA] leading-relaxed text-center">
+                                        云安全管理平台<br />数据安全中心<br />统一服务安全管理系统<br />WEB应用防火墙<br />数据备份系统
+                                    </div>
+                                </div>
+                            </div>
+                            {/* 底部四大服务按钮 */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                                <div className="bg-[#2CA3FA] text-white rounded-lg py-3 text-center font-bold text-base">安全检测</div>
+                                <div className="bg-[#2CA3FA] text-white rounded-lg py-3 text-center font-bold text-base">安全巡检服务</div>
+                                <div className="bg-[#2CA3FA] text-white rounded-lg py-3 text-center font-bold text-base">应急响应服务</div>
+                                <div className="bg-[#2CA3FA] text-white rounded-lg py-3 text-center font-bold text-base">安全保障服务</div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 弱电工程 Section */}
-                <section className="py-24 bg-gray-50">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>弱电工程</SectionTitle>
-                        <p className="text-center text-gray-500 mb-12">机房建设、综合布线、门禁、安防、会议室、广播等</p>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <Image src="https://images.unsplash.com/photo-1587831990711-23d7e4a642da?q=80&w=2070&auto=format&fit=crop" alt="弱电工程1" width={400} height={300} className="rounded-lg shadow-md object-cover w-full h-80" />
-                            <Image src="https://images.unsplash.com/photo-1591453082333-4343a628b3a0?q=80&w=2070&auto=format&fit=crop" alt="弱电工程2" width={400} height={300} className="rounded-lg shadow-md object-cover w-full h-80" />
-                            <Image src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2070&auto=format&fit=crop" alt="弱电工程3" width={400} height={300} className="rounded-lg shadow-md object-cover w-full h-80" />
+                <section className="py-[96px] bg-gray-50">
+                    <SectionTitle title="弱电工程" subtitle="机房建设、综合布线、门禁、安防、会议室、广播等" />
+                    <div className="container mx-auto px-[16px] w-[1120px]">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mt-8 items-stretch">
+                            {/* 左侧大图 */}
+                            <div className="w-[334px] h-[596px]">
+                                <Image src="/business_1.jpg" alt="弱电工程1" width={334} height={594} className="rounded-xl object-cover w-full h-full border border-primary" />
+                            </div>
+                            {/* 中间三张竖排小图 */}
+                            <div className="flex flex-col gap-[12px] h-full">
+                                <Image src="/business_2.jpg" alt="弱电工程2" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                                <Image src="/business_3.jpg" alt="弱电工程3" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                                <Image src="/business_4.jpg" alt="弱电工程4" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                            </div>
+                            {/* 右侧大图 */}
+                            <div className="w-[334px] h-[596px]">
+                                <Image src="/business_5.jpg" alt="弱电工程5" width={400} height={600} className="rounded-xl object-cover w-full h-full border border-primary" />
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 运维服务 Section */}
-                <section className="py-24">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>运维服务</SectionTitle>
-                        <p className="text-center text-gray-500 mb-12">驻场服务、安全巡检、系统调优、设备维保等技术服务</p>
-                        <div className="flex flex-wrap justify-center gap-8">
-                            <div className="border border-cyan-200 bg-cyan-50 p-10 rounded-xl text-center w-80 shadow-lg transition-transform hover:scale-105">
-                                <p className="text-4xl font-bold text-cyan-600">5 * 8 <span className="text-2xl">小时</span></p>
-                                <p className="text-gray-600 mt-2">常规运维</p>
+                <section className="py-[96px]">
+                    <div className="container mx-auto px-[16px]">
+                        <SectionTitle title="运维服务" subtitle="驻场服务、安全巡检、系统调优、设备维保等技术服务" className="mb-[48px]" />
+                        <div className="flex flex-wrap justify-center gap-[32px]">
+                            <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105">
+                                <p className="text-4xl font-bold">5 * 8 <span className="text-2xl">小时</span></p>
+                                <p className="mt-[8px]">常规运维</p>
                             </div>
-                            <div className="border border-lime-200 bg-lime-50 p-10 rounded-xl text-center w-80 shadow-lg transition-transform hover:scale-105">
-                                <p className="text-4xl font-bold text-lime-600">7 * 24 <span className="text-2xl">小时</span></p>
-                                <p className="text-gray-600 mt-2">应急运维</p>
+                            <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105">
+                                <p className="text-4xl font-bold">7 * 24 <span className="text-2xl">小时</span></p>
+                                <p className="mt-[8px]">应急运维</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 合作厂商 Section */}
-                <section className="py-24 bg-gray-50">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>合作厂商</SectionTitle>
-                        <div className="relative w-full max-w-4xl mx-auto flex items-center justify-center" style={{ height: '500px' }}>
-                             {/* Central Logo */}
-                            <div className="absolute z-10">
-                                <div className="bg-white p-6 rounded-full shadow-2xl w-48 h-48 flex items-center justify-center">
-                                    <svg viewBox="0 0 105 86" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-24 h-24"><path d="M16.3571 85.0117L2.43343 61.2238L52.5 0.988281L102.567 61.2238L88.6429 85.0117H16.3571Z" stroke="#38BDF8" strokeWidth="4"></path><path d="M19.3334 79.0117L52.5 24.0994L85.6667 79.0117H19.3334Z" stroke="#38BDF8" strokeWidth="4"></path></svg>
-                                </div>
-                            </div>
-
-                            {/* Orbiting Logos */}
-                            <div className="absolute w-full h-full animate-spin-slow">
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"> <PartnerLogo src="https://via.placeholder.com/150x60/0000FF/808080?Text=Huawei" alt="Huawei" /> </div>
-                                <div className="absolute top-1/4 -translate-y-1/2 left-4"> <PartnerLogo src="https://via.placeholder.com/150x60/FF0000/FFFFFF?Text=H3C" alt="H3C" /> </div>
-                                <div className="absolute top-1/4 -translate-y-1/2 right-4"> <PartnerLogo src="https://via.placeholder.com/150x60/00FF00/808080?Text=Sangfor" alt="Sangfor" /> </div>
-                                <div className="absolute bottom-1/4 -translate-y-1/2 left-4"> <PartnerLogo src="https://via.placeholder.com/150x60/FFFF00/808080?Text=Topsec" alt="Topsec" /> </div>
-                                <div className="absolute bottom-1/4 -translate-y-1/2 right-4"> <PartnerLogo src="https://via.placeholder.com/150x60/FFA500/FFFFFF?Text=Venustech" alt="Venustech" /> </div>
-                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"> <PartnerLogo src="https://via.placeholder.com/150x60/800080/FFFFFF?Text=Westone" alt="Westone" /> </div>
-                                <div className="absolute top-1/2 -translate-y-1/2 left-20"> <PartnerLogo src="https://via.placeholder.com/150x60/00FFFF/808080?Text=Hillstone" alt="Hillstone" /> </div>
-                                <div className="absolute top-1/2 -translate-y-1/2 right-20"> <PartnerLogo src="https://via.placeholder.com/150x60/FFC0CB/808080?Text=DPtech" alt="DPtech" /> </div>
-                            </div>
+                <section className="py-[96px] bg-gray-50">
+                    <div className="container mx-auto px-[16px]">
+                        <SectionTitle title="合作厂商" className="mb-[48px]" />
+                        <div className="w-full flex justify-center">
                         </div>
                     </div>
                 </section>
 
                 {/* 集成资质 Section */}
-                 <section className="py-24">
-                    <div className="container mx-auto px-4">
-                        <SectionTitle>集成资质</SectionTitle>
-                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                            <div className="border p-8 rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
-                                <h3 className="font-bold text-lg text-cyan-700">华为</h3>
-                                <p className="text-gray-500 mt-2">五钻产品金牌</p>
+                 <section className="py-[96px]">
+                    <SectionTitle title="集成资质" className="mb-[48px]" />
+                    <div className="container mx-auto px-[16px] w-[1120px]">
+                         <div className="text-primary grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[32px]">
+                            <div className="border p-[32px] rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
+                                <h3 className="font-bold text-lg">华为</h3>
+                                <p className="mt-[8px]">五钻产品金牌</p>
                             </div>
-                             <div className="border p-8 rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
-                                <h3 className="font-bold text-lg text-cyan-700">ISO9001</h3>
-                                <p className="text-gray-500 mt-2">质量管理体系认证</p>
+                             <div className="text-primary border p-[32px] rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
+                                <h3 className="font-bold text-lg">ISO9001</h3>
+                                <p className="mt-[8px]">质量管理体系认证</p>
                             </div>
-                             <div className="border p-8 rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
-                                <h3 className="font-bold text-lg text-cyan-700">ISO14001</h3>
-                                <p className="text-gray-500 mt-2">环境管理体系认证</p>
+                             <div className="text-primary border p-[32px] rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
+                                <h3 className="font-bold text-lg">ISO14001</h3>
+                                <p className="mt-[8px]">环境管理体系认证</p>
                             </div>
-                             <div className="border p-8 rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
-                                <h3 className="font-bold text-lg text-cyan-700">ISO27001</h3>
-                                <p className="text-gray-500 mt-2">信息安全管理体系认证</p>
+                             <div className="text-primary border p-[32px] rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow">
+                                <h3 className="font-bold text-lg ">ISO27001</h3>
+                                <p className="mt-[8px]">信息安全管理体系认证</p>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-        </div>
+        </>
     );
 };
 
