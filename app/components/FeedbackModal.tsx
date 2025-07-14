@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const DINGTALK_WEBHOOK = "https://oapi.dingtalk.com/robot/send?access_token=YOUR_ACCESS_TOKEN";
+const DINGTALK_WEBHOOK = "https://oapi.dingtalk.com/robot/send?access_token=14796063801d713a54ec2a0baf8ea5ee7c6e3f9dbc6051b84f4b843d2df51da8";
 
 interface FeedbackModalProps {
   onClose: () => void;
@@ -40,7 +40,7 @@ const FeedbackModal = ({ onClose }: FeedbackModalProps) => {
         body: JSON.stringify({
           msgtype: 'markdown',
           markdown: {
-            title: '网站新留言',
+            title: '耒石官网留言',
             text: `**姓名：** ${form.name}\n**电话：** ${form.phone}\n**内容：** ${form.message}`,
           },
         }),

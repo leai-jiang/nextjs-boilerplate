@@ -1,108 +1,257 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import SolutionDetailModal from "./components/SolutionDetailModal";
 import Banner from "../components/Banner";
 import SectionTitle from "../components/SectionTitle";
-
-type TabKey = "ict" | "security" | "ops" | "weak";
-
-type SolutionDetail = {
-  title: string;
-  img: string;
-  desc: string;
-  background: string;
-  customer: string;
-  description: string;
-  diagram?: string;
-};
-
-type ContentJson = {
-  solutions: {
-    tabs: { key: TabKey; label: string }[];
-    list: Record<TabKey, SolutionDetail[]>;
-  };
-};
+import SolutionList from "./components/SolutionList";
+import { PageDataType } from "./type";
 
 
 
-const SolutionsPage = () => {
-  const [tab, setTab] = useState<TabKey>("ict");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentSolution, setCurrentSolution] = useState<SolutionDetail | null>(null);
-  const [content, setContent] = useState<ContentJson["solutions"] | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("/content.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setContent(data.solutions);
-        setLoading(false);
-      });
-  }, []);
+export default async function SolutionsPage() {
+  const { data } = await fetchPageData();
 
-  if (loading || !content) {
-    return <div className="text-center py-[128px] text-gray-400">加载中...</div>;
-  }
 
   return (
-    <>
-      <Banner
-        image="/solutions_banner.jpg"
-        title="以集成技术为笔，绘制行业新图景"
-        subtitle="以客户需求为导向，提供个性化解决方案"
-        buttonText="服务支持"
-        buttonUrl="/support"
-      />
-
-      <div className="bg-white">
-        {/* Core Tabs Section */}
-        <div id="core" className="max-w-5xl mx-auto py-[80px] px-[16px]">
-          <SectionTitle title="四大业务核心" className="mb-[32px]" />
-          <div className="flex flex-wrap justify-center gap-[16px] mb-[32px]">
-            {content.tabs.map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setTab(t.key)}
-                className={`px-6 py-2 rounded-full border-2 text-lg font-semibold transition-colors ${tab === t.key ? 'bg-lime-400 border-lime-400 text-white' : 'bg-white border-gray-200 text-gray-700 hover:bg-lime-50'}`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-          <div className="text-center text-gray-600 mb-[48px]">
-            {tab === "ict" && <p>从网络到数据中心，提供一站式ICT集成服务，助力企业数字化转型。</p>}
-            {tab === "security" && <p>全方位信息安全防护，保障数据与业务安全。</p>}
-            {tab === "ops" && <p>专业运维团队，7x24小时守护您的IT系统。</p>}
-            {tab === "weak" && <p>弱电工程全流程服务，打造智能化办公与生产环境。</p>}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
-            {content.list[tab].map((item) => (
-              <div key={item.title} className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col w-[536px] h-[553px]">
-                <div className="relative w-full h-[302px]">
-                  <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" />
-                </div>
-                <div className="flex-1 p-[32px]">
-                  <div>
-                    <h3 className="text-xl font-bold mb-[16px] text-gray-800">{item.title}</h3>
-                    <p className="text-gray-600 mb-[24px]">{item.desc}</p>
-                  </div>
-                  <button
-                    onClick={() => { setCurrentSolution(item); setModalOpen(true); }}
-                    className="inline-block border border-lime-400 text-lime-500 font-semibold px-[32px] py-[8px] rounded-full hover:bg-lime-400 hover:text-white transition-colors duration-300"
-                  >了解更多</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        <SolutionDetailModal visible={modalOpen} onClose={() => setModalOpen(false)} solution={currentSolution} />
+      <main>
+      <Banner {...data.banner} />
+      <div id="core" className="max-w-5xl mx-auto py-[80px] px-[16px]">
+        <SectionTitle title="四大业务核心" className="mb-[32px]" />  
+        <SolutionList solutions={data.solutions} />
       </div>
-    </>
+      </main>
   );
 };
 
-export default SolutionsPage; 
+async function fetchPageData(): Promise<{ data: PageDataType }> {
+  return {
+    data: {
+      banner: {
+        image: "/solutions_banner.jpg",
+        title: "以集成技术为笔，绘制行业新图景",
+        subtitle: "以客户需求为导向，提供个性化解决方案",
+        buttonText: "服务支持",
+        buttonUrl: "/support",
+      },
+      solutions: [
+        {
+          key: "ict",
+          category: "ICT集成解决方案",
+          desc: `从顶层设计到落地交付，做您数字世界的“建筑师”
+为什么选择我们？
+全栈能力：覆盖“云-网-算-存-能”全链条，打破技术孤岛
+场景深耕：针对园区、DC、计算、能源四大场景定制最优解
+持续演进：架构预留AI/液冷/400G等演进能力，保护投资
+绿色先行：集成节能技术，助您达成碳中和目标
+全生命周期服务：从咨询设计到运维优化，全程护航
+交付的不仅是设备，更是：
+敏捷创新的业务引擎+安全绿色的数字基座+面向未来的可持续竞争力`,
+          cases: [
+            {
+              title: "园区网络集成解决方案",
+              intro: "现代园区需支撑海量终端（办公/IoT/移动）、多元业务（生产/安防/会议）及灵活办公模式，传统网络在覆盖、带宽、管理、安全上捉襟见肘。本方案通过全光网、Wi-Fi6/7、SDN、AI运维等技术重构园区网络，打造泛在接入、智能运维、业务随行、安全内生的数字化神经中枢。",
+              img: "/solutions_cate1_1.jpg",
+              detail: `<h2><strong>方案背景（连接万物，智启园区新生态）</strong></h2>
+<p>现代园区需支撑海量终端（办公/IoT/移动）、多元业务（生产/安防/会议）及灵活办公模式，传统网络在覆盖、带宽、管理、安全上捉襟见肘。本方案通过全光网、Wi-Fi6/7、SDN、AI运维等技术重构园区网络，打造泛在接入、智能运维、业务随行、安全内生的数字化神经中枢。<br></p>
+<h2><strong>客户需求</strong></h2>
+<p>需满足高密终端并发接入与4K/VR等高带宽业务无卡顿体验<br>
+实现有线无线一体化管理，降低运维复杂度<br>
+构建物联网、安防、办公等多网融合的统一承载平台<br>
+保障访客/员工/设备的分级安全隔离与策略联动<br>
+支撑未来5年业务扩展，避免重复投资<br></p>
+<h2><strong>方案描述</strong></h2>
+<p>&nbsp;<br>
+架构革新：采用光纤到房间/桌面（FTTR/FTTD）+高性能Wi-Fi6/7无线覆盖，提供万兆接入能力<br>
+智能控制：部署SDN控制器实现业务自动编排、策略统一下发<br>
+安全融合：通过SDP+微分段技术实现“零信任”访问，物联安全网关专护IoT设备<br>
+统一运维：搭载AI运维平台，实时分析用户体验，主动定位故障<br>
+绿色节能：选用高能效设备，PoE++供电降低布线成本<br></p>
+<h2><strong>方案优势</strong></h2>
+<p>体验升级：无线漫游“零感知”，关键业务时延&lt;20ms，员工效率提升30%<br>
+管理增效：配置效率提升80%，故障定位时间缩短90%<br>
+投资保护：弹性架构支持平滑扩容，节省后期改造成本40%+<br>
+安全闭环：从终端到云端动态防护，安全事件响应速度提升5倍<br></p>
+`,
+            },
+            {
+              title: "数据中心网络集成解决方案",
+              intro: "云计算、AI、边缘计算推动数据中心向高性能、低时延、自动化演进。传统三层架构难以应对东西向流量暴增与业务敏捷需求。本方案基于Spine-LeafCLOS架构与无损网络技术，构建云原生就绪、智能无损、全生命周期管理的新一代数据中心网络。",
+              img: "/solutions_cate1_2.jpg",
+              detail: `<h2><strong>方案背景（云网协同，驱动算力无界流动）</strong></h2>
+<p>云计算、AI、边缘计算推动数据中心向高性能、低时延、自动化演进。传统三层架构难以应对东西向流量暴增与业务敏捷需求。本方案基于Spine-LeafCLOS架构与无损网络技术，构建云原生就绪、智能无损、全生命周期管理的新一代数据中心网络。<br></p>
+<h2><strong>客户需求</strong></h2>
+<p>解决服务器集群东西向流量瓶颈（如AI训练、分布式存储）<br>
+实现跨云/跨域网络自动化打通，加速应用部署<br>
+保障RoCEv2、存储网络等场景的零丢包、低时延<br>
+满足等保/密评要求，构建安全资源池<br>
+降低运维复杂度与能耗<br></p>
+<h2><strong>方案描述</strong></h2>
+<p>&nbsp;<br>
+架构升级：部署25G/100GSpine-LeafCLOS，支持横向扩展至万台服务器<br>
+智能无损：应用AIECN+拥塞控制算法，实现RDMA流量零丢包<br>
+云网协同：集成SDN控制器+云平台API，分钟级开通业务网络<br>
+安全内生：微隔离+东西向流量可视化，东西向攻击拦截率99.9%<br>
+极简运维：Telemetry实时采集，AI预测链路故障<br></p>
+<h2><strong>方案优势</strong></h2>
+<p>性能飞跃：东西向带宽提升10倍，时延降低至5μs，AI训练效率提升40%<br>
+敏捷交付：业务上线时间从周级缩短至小时级<br>
+安全合规：东西向风险暴露面减少80%，满足等保四级<br>
+绿色节能：超低功耗芯片+智能调速，PUE降低0.15<br></p>
+`,
+            },
+            {
+              title: "数据存储和计算解决方案",
+              intro: "数据爆炸式增长与实时分析需求，要求存储与计算架构具备弹性扩展、高性能、多协议互通能力。本方案通过超融合（HCI）、分布式存储、GPU资源池化技术，构建存算融合、性能按需、多云就绪的现代化数据基础设施。",
+              img: "/solutions_cate1_3.jpg",
+              detail: `<h2><strong>方案背景（存算一体，激活数据核心价值）</strong></h2>
+<p>数据爆炸式增长与实时分析需求，要求存储与计算架构具备弹性扩展、高性能、多协议互通能力。本方案通过超融合（HCI）、分布式存储、GPU资源池化技术，构建存算融合、性能按需、多云就绪的现代化数据基础设施。<br></p>
+<h2><strong>客户需求</strong></h2>
+<p>解决海量非结构化数据（视频/日志）存储成本与性能矛盾<br>
+实现数据库、AI、VDI等场景的性能隔离与资源弹性<br>
+支持私有云/公有云数据无缝流动，避免厂商锁定<br>
+保障核心业务数据零丢失（RPO=0）<br>
+简化灾备与容灾架构<br></p>
+<h2><strong>方案描述</strong></h2>
+<p>&nbsp;<br>
+存算融合：部署超融合架构，计算存储节点按需扩展<br>
+性能加速：NVMe全闪存池+SCM持久内存，百万级IOPS；GPU虚拟化实现算力共享<br>
+数据互通：统一命名空间支持文件/对象/块协议互通，对接AWSS3/阿里OSS<br>
+全栈容灾：CDM+双活存储，业务切换时间&lt;30秒<br>
+智能管理：QoS策略自动调度，热点数据智能分层<br></p>
+<h2><strong>方案优势</strong></h2>
+<p>成本优化：存储利用率提升至90%，TCO降低35%<br>
+性能保障：关键业务IOPS提升8倍，AI训练数据读取加速50%<br>
+业务连续：RTO&lt;5分钟，年故障停机时间接近于零<br>
+云自由：混合云数据迁移效率提升70%<br></p>`,
+            },
+            {
+              title: "数字能源机房解决方案",
+              intro: "数据中心能耗占企业总用电量60%+，“双碳”目标下需重构能源架构。本方案融合高效供电、智能锂电、液冷、AI节能技术，打造极简、绿色、安全、智能的新一代数字能源系统。",
+              img: "/solutions_cate1_4.jpg",
+              detail: `<h2><strong>方案背景（零碳DC，夯实绿色数字基石）</strong></h2>
+<p>数据中心能耗占企业总用电量60%+，“双碳”目标下需重构能源架构。本方案融合高效供电、智能锂电、液冷、AI节能技术，打造极简、绿色、安全、智能的新一代数字能源系统。<br></p>
+<h2><strong>客户需求</strong></h2>
+<p>降低PUE指标满足政策监管（目标&lt;1.3）<br>
+解决UPS供电效率低、电池占地大、运维风险高痛点<br>
+应对高密算力（30kW+/机柜）散热挑战<br>
+实现能源精细化管理与碳追踪<br>
+保障电力故障0秒切换<br></p>
+<h2><strong>方案描述</strong></h2>
+<p>&nbsp;<br>
+供电革新：模块化UPS+智能锂电，效率&gt;97%，节省占地60%<br>
+液冷赋能：冷板式/浸没式液冷，单机柜支持100kW+散热<br>
+AI节能：iCooling系统实时调节空调参数，PUE降低8%~15%<br>
+安全联防：3D可视化+AI巡检，提前48小时预警故障<br>
+碳管理：能效云平台追踪碳排放，生成绿色报告<br></p>
+<h2><strong>方案优势</strong></h2>
+<p>绿色达标：PUE降至1.15~1.25，年省电费百万级<br>
+安全倍增：供电路径全冗余，故障响应速度提升10倍<br>
+空间释放：供电/散热设备占地减少70%，IT机位增加40%<br>
+管理智能：能源效率可视化管理，运维人力节省50%<br></p>
+`,
+            },
+          ],
+        },
+        {
+          key: "security",
+          category: "信息安全解决方案",
+          desc: `从合规达标到攻防对抗，做您数字资产的“终极防线”
+为什么必须选择我们？
+实战化防御体系：方案经攻防实验室对抗验证，拦截APT攻击成功率>95%
+三位一体能力：融合技术防御（产品）+安全运营（服务）+威胁情报（情报）
+量化价值证明：部署后客户安全事件下降80%，等保测评成本降低40%
+全域覆盖：支持云原生/混合云/物联网等复杂场景
+我们交付的是：
+可自证的安全能力+可运营的防御体系+可量化的风险降低`,
+          cases: [
+            {
+              title: "等级保护2.0解决方案",
+              intro: "等保2.0是国家安全强制要求，但企业常陷入应付检查、落地脱节、持续失效的困境。本方案提供从定级备案到等保测评的全流程闭环服务，将合规要求转化为可运营、可度量、可持续的安全能力。",
+              img: "/solutions_cate2_1.jpg",
+              detail: ``,
+            },
+            {
+              title: "零信任解决方案",
+              intro: "远程办公与云化转型打破传统安全边界，VPN漏洞、内网横向渗透、权限滥用风险激增。本方案基于SDP+微隔离+持续认证技术，构建永不信任、持续验证、最小授权的新一代安全架构。",
+              img: "/solutions_cate2_2.jpg",
+              detail: ``,
+            },
+            {
+              title: "防勒索解决方案",
+              intro: "勒索攻击进阶为双重勒索（加密+泄密），传统备份与杀毒难以应对。本方案融合诱捕防御、行为阻断、数据保险箱、离线备份四层能力，实现事前免疫、事中熔断、事后无损的全面防护。",
+              img: "/solutions_cate2_3.jpg",
+              detail: ``,
+            },
+            {
+              title: "数据安全解决方案",
+              intro: "《数据安全法》要求企业“合法、正当、必要”处理数据，但数据在采集、传输、使用中面临越权访问、明文泄露、滥用溯源风险。本方案通过分类分级、加密脱敏、水印溯源、权限治理实现数据可视、可控、可溯。",
+              img: "/solutions_cate2_4.jpg",
+              detail: ``,
+            },
+          ],
+        },
+        {
+          key: "engineer",
+          category: "弱电工程解决方案",
+          desc: `从蓝图到交付，做您智能空间的“总工程师”
+为什么选择我们？
+✅全专业融合设计：打通网络、安防、楼控、布线四大系统数据孤岛
+✅全流程精细管控：BIM建模指导施工，误差<2mm，0现场返工
+✅全生命周期服务：提供从设计、部署到维保的20年质量承诺
+✅绿色安全双达标：材料符合RoHS/REACH，施工0安全事故
+交付的不仅是工程，更是：
+安全智能的空间体验+持续优化的运营效率+面向未来的资产增值`,
+          cases: [
+            {
+              title: "通信网络系统",
+              intro: "传统铜缆网络已无法满足4K/VR会议、物联网终端爆发及未来10年带宽需求。本方案通过FTTR（光纤到房间）、Wi-Fi7无线覆盖、全光园区网重构建筑通信基础，实现万兆入室、微秒级漫游、物联专网融合的极速智能连接。",
+              img: "/solutions_cate3_1.jpg",
+              detail: ``,
+            },
+            {
+              title: "监控报警系统",
+              intro: "传统监控存在盲区多、误报率高、响应滞后等痛点。本方案融合AI视频分析、多光谱传感、报警联动技术，打造事前预警、事中干预、事后追溯的全场景安防体系。",
+              img: "/solutions_cate3_2.jpg",
+              detail: ``,
+            },
+            {
+              title: "智能楼宇系统",
+              intro: "建筑能耗中35%因管理粗放浪费。本方案通过BA系统（楼宇自控）+AIoT实现照明/空调/电梯/能源的智能联动，构建舒适健康、绿色低碳、精细管理的智慧空间。",
+              img: "/solutions_cate3_3.jpg",
+              detail: ``,
+            },
+            {
+              title: "综合布线系统",
+              intro: "布线系统是建筑的“终身隐蔽工程”，传统方案存在扩容难、线缆杂乱、标识缺失等问题。本方案基于全光网架构+电子配线架，打造高密灵活、智能管理、面向未来的布线基础设施。",
+              img: "/solutions_cate3_4.jpg",
+              detail: ``,
+            },
+          ],
+        },
+        {
+          key: "service",
+          category: "运维服务解决方案",
+          desc: "",
+          cases: [
+            {
+              title: "信息化系统运维",
+              intro: "我们专注于您信息中心机房核心设备（服务器、系统数据库、磁盘阵列等）的全生命周期专业运维管理。通过主动监控、定期维护、性能优化及快速响应机制，我们致力于预防故障、消除隐患，确保您关键信息系统的高可用性、持续稳定与高效运行。\n这不仅是设备的维护，更是为您的核心业务连续性、数据安全性与运营效率提供坚实可靠的全方位技术保障，助力您构建稳健、高效的信息化环境，专注核心业务发展。",
+              img: "/solutions_cate4_1.jpg",
+              detail: ``,
+            },
+            {
+              title: "网络系统运维",
+              intro: "现代企业的运营高度依赖稳定、高效、安全的网络连接。网络基础设施（包括路由器、交换机、防火墙、无线AP、负载均衡、VPN等）如同企业的“神经系统”，承载着关键业务数据传输、内部协同与外部服务的重任。本方案旨在提供专业的网络系统全生命周期运维服务，确保您的网络平台高速畅通、韧性可靠、安全无忧，成为业务创新与发展的坚实数字基石。",
+              img: "/solutions_cate4_2.jpg",
+              detail: ``,
+            },
+            {
+              title: "信息安全运维",
+              intro: "随着网络攻击日益复杂化、常态化，安全已从单纯的防护手段升级为业务连续性的核心保障和企业生存发展的生命线。面对高级持续性威胁（APT）、勒索软件、数据泄露、内部风险及日益严格的合规要求，传统的被动防御和碎片化管理难以应对。本方案提供主动式、体系化、持续性的安全运维服务（SecOps），专注于您信息系统与网络环境的安全态势持续监控、深度分析、快速响应与闭环治理，助力您构筑主动防御、动态适应、合规可信的数字安全韧性。",
+              img: "/solutions_cate4_3.jpg",
+              detail: ``,
+            },
+          ],
+        },
+      ],
+    }
+  }
+}
