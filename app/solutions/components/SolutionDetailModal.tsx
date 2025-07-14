@@ -19,10 +19,12 @@ const SolutionDetailModal = ({ visible, onClose, solution }: SolutionDetailModal
         >
           ×
         </button>
-        <div className="overflow-hidden rounded-t-2xl">
-          <img src={solution.img} alt={solution.title} width={720} height={325} className="w-full h-[325px] object-cover" />
+        <div className="w-full max-h-[1000px] overflow-y-auto">
+          <div className="overflow-hidden rounded-t-2xl">
+            <img src={solution.img} alt={solution.title} width={720} height={325} className="w-full h-[325px] object-cover" />
+          </div>
+          <div className="p-[32px]" dangerouslySetInnerHTML={{ __html: solution.detail }} />
         </div>
-        <div className="p-[32px]" dangerouslySetInnerHTML={{ __html: solution.detail }} />
       </div>
     </div>
   );

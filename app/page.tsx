@@ -104,7 +104,7 @@ export default async function Home() {
                 <h2 className="text-[36px] font-semibold text-[#141414]">关于我们</h2>
                 <div className="mt-[16px] w-[80px] h-[2px] bg-lime-400 mb-[24px]"></div>
               </div>
-              <p className="text-[#141414] text-[16px] leading-[1.75] mb-[64px]">
+              <p className="text-[#141414] text-[16px] leading-[1.75] mb-[200px]">
                 上海耒石网络科技有限公司成立于2020年12月17日，主营业务为信息安全、网络技术研究发展、系统集成服务、弱电工程等。拥有丰富的项目经验和技术，以及雄厚的售后服务实力，为用户提供网络平台、系统平台、应用平台等全方位、高品质、有效的整体性技术服务，服务对象涉及政府、卫生、教育、企业等行业。
               </p>
               <Link href="/about" className="inline-block bg-lime-400 text-white font-medium py-[12px] px-[32px] rounded-full text-lg hover:bg-lime-500 transition-colors">

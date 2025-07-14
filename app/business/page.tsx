@@ -12,20 +12,20 @@ export default async function BusinessPage() {
             <Banner {...data.banner} />
             
             {/* ICT集成 Section */}
-            <section className="py-[96px] bg-gray-50">
-                <SectionTitle title="ICT集成" className="mb-[24px]" />
-                <div className="container mx-auto px-[16px] w-[1120px]">
-                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-8 md:p-12 max-w-5xl mx-auto">
-                        <div className="text-center mb-8">
-                            <div className="text-[20px] md:text-[22px] font-bold text-[#2CA3FA] mb-2">ICT集成业务架构</div>
+            <section className="py-[96px]">
+                <SectionTitle title="ICT集成" className="mb-[48px]" />
+                <div className="container mx-auto w-[1120px]">
+                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto">
+                        <div className="text-center mb-[16px]">
+                            <div className="text-[24px] font-semibold text-[#297FCC] mb-2">ICT集成业务架构</div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-[10px]">
                             {data.ict.map((item, i) => (
-                                <div className="bg-[#F7FAFE] rounded-xl p-6 flex flex-col items-center" key={i}>
-                                    <div className="text-[#2CA3FA] font-bold text-lg mb-4">{item.category}</div>
+                                <div className="bg-[#F7FAFE] rounded-xl p-[16px] flex flex-col items-center" key={i}>
+                                    <div className="text-[#297FCC] font-bold text-[24px] mb-4">{item.category}</div>
                                     <div className="flex flex-col gap-3 w-full">
                                         {item.subCategories.map(subcate => (
-                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-2 text-center text-base font-medium" key={subcate}>{subcate}</div>
+                                            <div className="bg-[#E6F2FE] text-[#297FCC] rounded-lg py-2 text-center text-base font-normal" key={subcate}>{subcate}</div>
                                         ))}
                                     </div>
                                 </div>
@@ -38,40 +38,34 @@ export default async function BusinessPage() {
             {/* 信息安全 Section */}
             <section className="py-[96px]">
                 <div className="container mx-auto">
-                    <SectionTitle title="信息安全" />
-                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-6 md:p-10 max-w-6xl mx-auto mt-8 w-[1120px]">
+                    <SectionTitle title="信息安全" className="mb-[48px]" />
+                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto w-[1120px] overflow-hidden">
                         {/* 顶部大标题 */}
-                        <div className="bg-[#2CA3FA] text-white text-center text-lg md:text-xl font-bold rounded-t-xl py-3 mb-4">{data.infoSecurity.title}</div>
+                        <div className="w-full h-[49px] leading-[49px] bg-[#297FCC] text-white text-center text-lg md:text-xl font-bold rounded-xl mb-4">{data.infoSecurity.title}</div>
+                        
                         {/* 体系 */}
                         <div className="flex items-center justify-between gap-[10px]">
                             {data.infoSecurity.subtitles.map(subtitle => (
-                                <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium flex-1" key={subtitle}>{subtitle}</div>
+                                <div className="h-[54px] leading-[54px] bg-[#E6F2FE] text-[#297FCC] rounded-lg text-center text-[20px] font-semibold flex-1" key={subtitle}>{subtitle}</div>
                             ))}
                         </div>
-                        {/* 体系与解决方案 */}
-                        <div className="flex flex-col md:flex-row gap-4 mb-6">
-                            {/* 左侧竖排 */}
-                            <div className="flex md:flex-col items-center md:items-start md:justify-center md:w-[80px] shrink-0">
-                                <span className="text-[#2CA3FA] font-bold text-base md:text-lg tracking-widest md:rotate-[-90deg] md:mb-0 mb-2">解决方案</span>
-                            </div>
-                            {/* 体系与方案内容 */}
-                            <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                {/* 安全策略体系 */}
-                                {data.infoSecurity.solutions.map(item => (
-                                    <div className="flex flex-col gap-2 w-full" key={item}>
-                                        <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium">{item}</div>
-                                    </div>
-                                ))}
-                            </div>
+
+                        {/* 体系与方案内容 */}
+                        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 rounded-2xl bg-[#297FCC]/10 my-[16px] p-[16px]">
+                            {/* 安全策略体系 */}
+                            {data.infoSecurity.solutions.map(item => (
+                                <div className="h-[45px] leading-[45px] bg-[#297FCC]/10 text-[#297FCC] rounded-lg text-center text-sm font-medium">{item}</div>
+                            ))}
                         </div>
+
                         {/* 安全组织体系 */}
-                        <div className="flex gap-[10px]">
+                        <div className="flex gap-[16px]">
                             {data.infoSecurity.categories.map(item => (
-                                <div className="bg-[#F7FAFE] rounded-xl p-4 flex flex-col items-center flex-1" key={item.category}>
-                                    <div className="text-[#2CA3FA] font-bold mb-2">{item.category}</div>
+                                <div className="bg-[#E6F2FE] p-[16px] rounded-xl flex flex-col items-center flex-1" key={item.category}>
+                                    <div className="bg-[#297FCC] w-full text-white h-[49px] leading-[49px] text-[20px] font-semibold rounded-2xl text-center mb-[16px]">{item.category}</div>
                                     <div className="flex flex-col gap-2 w-full">
                                         {item.subCategories.map(subcate => (
-                                            <div className="bg-[#E6F2FE] text-[#2CA3FA] rounded-lg py-1 px-2 text-center text-sm font-medium" key={subcate}>{subcate}</div>
+                                            <div className="text-[#297FCC] text-[14px] leading-[1.5] text-center" key={subcate}>{subcate}</div>
                                         ))}
                                     </div>
                                 </div>
@@ -81,10 +75,10 @@ export default async function BusinessPage() {
                     </div>
                     
                     {/* 底部四大服务按钮 */}
-                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-6 md:p-10 max-w-6xl mx-auto mt-8 w-[1120px]">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto mt-[16px] w-[1120px]">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {data.infoSecurity.services.map(service => (
-                                <div className="bg-[#2CA3FA] text-white rounded-lg py-3 text-center font-bold text-base" key={service}>{service}</div>
+                                <div className="bg-[#297FCC] text-white rounded-lg h-[49px] leading-[49px] text-[20px] text-center font-semibold" key={service}>{service}</div>
                             ))}
                         </div>
                     </div>
@@ -97,18 +91,18 @@ export default async function BusinessPage() {
                 <div className="container mx-auto px-[16px] w-[1120px]">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mt-8 items-stretch">
                         {/* 左侧大图 */}
-                        <div className="w-[334px] h-[596px]">
-                            <Image src="/business_1.jpg" alt="弱电工程1" width={334} height={594} className="rounded-xl object-cover w-full h-full border border-primary" />
+                        <div className="w-[334px] h-[595px]">
+                            <Image src="/business_1.jpg" alt="弱电工程1" width={334} height={595} className="rounded-xl object-cover w-full h-full border border-primary" />
                         </div>
                         {/* 中间三张竖排小图 */}
-                        <div className="flex flex-col gap-[12px] h-full">
-                            <Image src="/business_2.jpg" alt="弱电工程2" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
-                            <Image src="/business_3.jpg" alt="弱电工程3" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
-                            <Image src="/business_4.jpg" alt="弱电工程4" width={340} height={192} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                        <div className="flex flex-col gap-[12px] w-[334px] h-[595px]">
+                            <Image src="/business_2.jpg" alt="弱电工程2" width={340} height={191} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                            <Image src="/business_3.jpg" alt="弱电工程3" width={340} height={191} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
+                            <Image src="/business_4.jpg" alt="弱电工程4" width={340} height={191} className="rounded-xl object-cover w-[340px] h-[192px] border border-primary" />
                         </div>
                         {/* 右侧大图 */}
-                        <div className="w-[334px] h-[596px]">
-                            <Image src="/business_5.jpg" alt="弱电工程5" width={400} height={600} className="rounded-xl object-cover w-full h-full border border-primary" />
+                        <div className="w-[334px] h-[595px]">
+                            <Image src="/business_5.jpg" alt="弱电工程5" width={400} height={595} className="rounded-xl object-cover w-full h-full border border-primary" />
                         </div>
                     </div>
                 </div>
@@ -119,11 +113,11 @@ export default async function BusinessPage() {
                 <div className="container mx-auto px-[16px]">
                     <SectionTitle title="运维服务" subtitle="驻场服务、安全巡检、系统调优、设备维保等技术服务" className="mb-[48px]" />
                     <div className="flex flex-wrap justify-center gap-[32px]">
-                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105">
+                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-[#297FCC]">
                             <p className="text-4xl font-bold">5 * 8 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">常规运维</p>
                         </div>
-                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105">
+                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-[#297FCC]">
                             <p className="text-4xl font-bold">7 * 24 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">应急运维</p>
                         </div>
@@ -136,6 +130,7 @@ export default async function BusinessPage() {
                 <div className="container mx-auto px-[16px]">
                     <SectionTitle title="合作厂商" className="mb-[48px]" />
                     <div className="w-full flex justify-center">
+                        <img src="/business_6.png" alt="合作厂商" />
                     </div>
                 </div>
             </section>
@@ -144,7 +139,7 @@ export default async function BusinessPage() {
             <section className="py-[96px]">
                 <SectionTitle title="集成资质" className="mb-[48px]" />
                 <div className="container mx-auto px-[16px] w-[1120px]">
-                    <div className="text-primary grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[32px]">
+                    <div className="text-[#297FCC] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[32px]">
                     {data.inteQualification.map((item, i) => (
                         <div className="border p-[32px] rounded-lg text-center bg-gray-50 hover:shadow-xl transition-shadow" key={i}>
                             <h3 className="font-bold text-lg">{item.title}</h3>
@@ -277,7 +272,7 @@ async function fetchPageData(): Promise<{ data: PageDataType }> {
                             "云安全中心",
                             "统一服务器安全管理系统",
                             "WEB应用防火墙",
-                            "网站检測  等保一体机",
+                            "网站检測 等保一体机",
                         ],
                     },
                 ],

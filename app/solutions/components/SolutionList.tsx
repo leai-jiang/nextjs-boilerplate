@@ -29,19 +29,19 @@ export default function SolutionList({ solutions }: SolutionListProps) {
       </div>
 
       <div className="text-center text-gray-600 mb-[48px]">
-        <p>{activeSolution?.desc}</p>
+        <p className="whitespace-pre-wrap">{activeSolution?.desc}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
         {activeSolution?.cases.map((item) => (
           <div key={item.title} className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col w-[536px] h-[553px]">
             <div className="relative w-full h-[302px]">
-              <img src={item.img} alt={item.title} className="object-cover transition-transform duration-300 group-hover:scale-105" />
+              <img src={item.img} alt={item.title} className="w-full h-full" />
             </div>
             <div className="flex-1 p-[32px]">
               <div>
                 <h3 className="text-xl font-bold mb-[16px] text-gray-800">{item.title}</h3>
-                <p className="text-gray-600 mb-[24px]">{item.intro}</p>
+                <p className="text-gray-600 mb-[24px] line-clamp-3">{item.intro}</p>
               </div>
               <button
                 onClick={() => { setCurrentSolution(item); setModalOpen(true); }}
