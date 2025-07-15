@@ -1,3 +1,5 @@
+import AnimatedButton from "@/app/components/AnimatedButton";
+
 interface CaseCardProps {
   imageUrl: string;
   title: string;
@@ -12,12 +14,7 @@ const CaseCard = ({ imageUrl, title, onClick }: CaseCardProps) => {
           </div>
           <div className="p-[20px] text-left w-full mt-[12px]">
             <h3 className="text-[18px] font-semibold leading-[1.5] mb-[24px]">{title}</h3>
-            <button
-              onClick={onClick}
-              className="inline-block border border-lime-400 text-lime-500 font-semibold px-[32px] py-[8px] rounded-full hover:bg-lime-400 hover:text-white transition-colors duration-300"
-            >
-              了解更多
-            </button>
+            <AnimatedButton onClick={onClick}>了解更多</AnimatedButton>
           </div>
       </div>
   );

@@ -37,3 +37,23 @@
 body {
   font-family: PingFang SC;
 }
+
+/* AnimatedButton 动画样式 */
+.animated-btn-bg {
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  transform: translateX(-100%) scaleX(0);
+  transform-origin: right;
+}
+.animated-btn-hover .animated-btn-bg {
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  transform: translateX(0) scaleX(1);
+  transform-origin: left;
+}
+
+.animated-btn-text {
+  color: #2563eb; /* tailwind blue-600 */
+  transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.animated-btn-hover .animated-btn-text {
+  color: #fff;
+}

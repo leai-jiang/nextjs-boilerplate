@@ -17,7 +17,7 @@ export default async function SupportPage() {
           <SectionTitle title="四大业务核心" subtitle="专业化定制 支撑服务" className="mb-[48px]" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-center max-w-3xl mx-auto mb-12">
             {data.tab.map(tab => (
-              <div key={tab.key} className="bg-white rounded-xl shadow-md px-6 py-4 text-center font-semibold text-lg text-[#297FCC] hover:bg-cyan-50 transition cursor-pointer">
+              <div key={tab.key} className="bg-white rounded-xl shadow-md px-6 py-4 text-center font-semibold text-lg text-primary hover:bg-cyan-50 transition cursor-pointer">
                 {tab.label}
               </div>
             ))}

@@ -31,7 +31,7 @@ const AboutPage = async () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[48px]">
           {data.develop.map((item, i) => (
             <div className="flex flex-col items-center" key={i}>
-              <div className="w-[48px] h-[48px] text-white flex items-center justify-center rounded-full font-bold text-xl bg-[#297FCC] bg-gradient-to-b from-white/30 to-transparent mb-[24px]">{i + 1}</div>
+              <div className="w-[48px] h-[48px] text-white flex items-center justify-center rounded-full font-bold text-xl bg-primary mb-[24px]">{i + 1}</div>
               <h3 className="mb-[12px] text-[24px] font-semibold leading-[1.5]">{item.title}</h3>
               <p className="text-[#171717] text-center text-[16px] leading-[1.75] font-normal">{item.desc}</p>
             </div>

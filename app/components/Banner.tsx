@@ -1,5 +1,9 @@
+'use client';
+
 import Link from "next/link"
 import Image from "next/image"
+import AnimatedButton from '../components/AnimatedButton';
+import { motion } from 'framer-motion';
 
 interface BannerProps {
   image: string;
@@ -19,11 +23,23 @@ const Banner = ({ image, title, subtitle, buttonText, buttonUrl }: BannerProps) 
       {/* 文字内容 */}
       <div className="w-[1440px] mx-auto">
         <div className="relative z-20 flex flex-col justify-center pl-[96px] w-full max-w-[700px]">
-          <h1 className="text-[40px] font-bold text-[#222] leading-tight mb-[24px]">{title}</h1>
-          <p className="text-[18px] text-[#666] mb-[40px]">{subtitle}</p>
-          <Link href={buttonUrl} className="w-[144px] h-[44px] bg-lime-400 text-white font-medium rounded-full text-[16px] hover:bg-lime-500 transition-colors flex items-center justify-center">
-            {buttonText}
-          </Link>
+          <motion.h1
+            className="text-[40px] font-bold text-[#222] leading-tight mb-[24px]"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            {title}
+          </motion.h1>
+          <motion.p
+            className="text-[18px] text-[#666] mb-[40px]"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+          >
+            {subtitle}
+          </motion.p>
+          <Link href={buttonUrl}><AnimatedButton>{buttonText}</AnimatedButton></Link>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { SolutionDetail, SolutionType } from "../type";
 import SolutionDetailModal from "./SolutionDetailModal";
+import AnimatedButton from "@/app/components/AnimatedButton";
 
 interface SolutionListProps {
   solutions: SolutionType[];
@@ -21,7 +22,7 @@ export default function SolutionList({ solutions }: SolutionListProps) {
               <button
                 key={t.category}
                 onClick={() => setTab(t.key)}
-                className={`px-6 py-2 rounded-full border-2 text-lg font-semibold transition-colors ${tab === t.key ? 'bg-lime-400 border-lime-400 text-white' : 'bg-white border-gray-200 text-gray-700 hover:bg-lime-50'}`}
+                className={`px-6 py-2 rounded-full border-2 text-lg font-semibold transition-colors ${tab === t.key ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-600 hover:text-white'}`}
               >
                 {t.category}
               </button>
@@ -43,10 +44,9 @@ export default function SolutionList({ solutions }: SolutionListProps) {
                 <h3 className="text-xl font-bold mb-[16px] text-gray-800">{item.title}</h3>
                 <p className="text-gray-600 mb-[24px] line-clamp-3">{item.intro}</p>
               </div>
-              <button
+              <AnimatedButton
                 onClick={() => { setCurrentSolution(item); setModalOpen(true); }}
-                className="inline-block border border-lime-400 text-lime-500 font-semibold px-[32px] py-[8px] rounded-full hover:bg-lime-400 hover:text-white transition-colors duration-300"
-              >了解更多</button>
+              >了解更多</AnimatedButton>
             </div>
           </div>
         ))}
