@@ -10,6 +10,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
+    { href: '/', label: '首页' },
     { href: '/business', label: '主营业务' },
     { href: '/cases', label: '项目案例' },
     { href: '/solutions', label: '解决方案' },
