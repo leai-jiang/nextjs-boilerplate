@@ -106,13 +106,12 @@ async function fetchPageData(): Promise<{data: PageDataType}> {
         },
       ],   
       systemCerts: [
-        { label: "华为", desc: "客户集成认证" },
         { label: "ISO9001", desc: "质量管理体系认证" },
         { label: "ISO20000", desc: "IT服务管理认证" },
         { label: "ISO27001", desc: "信息安全管理体系认证" },
       ],
       engineerCerts: [
-        { label: "HCIP" },
+        { label: "H3CIE" },
         { label: "HCIE" },
         { label: "PMP" },
         { label: "CISAW" },
