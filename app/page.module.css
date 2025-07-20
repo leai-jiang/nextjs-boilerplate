@@ -1,9 +1,9 @@
 .ourcustomer__card {
-  background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(180deg, rgba(41, 127, 204, 0) 50%, rgba(41, 127, 204, 0.1) 100%);
-  box-shadow: 0px 4px 16px 0px #1D6CB214;
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(180deg, rgba(148, 204, 41, 0) 50%, rgba(148, 204, 41, 0.1) 100%);
+  box-shadow: 0px 4px 16px 0px #94cc2914;
 
 }
 .ourcustomer__card__icon {
-  border: 10px solid #2563eb1A;
-  box-shadow: 0px 4px 16px 0px #1D6CB21A;
+  border: 10px solid #94cc291A;
+  box-shadow: 0px 4px 16px 0px #94cc291A;
 }

@@ -22,7 +22,7 @@ export default function SolutionList({ solutions }: SolutionListProps) {
               <button
                 key={t.category}
                 onClick={() => setTab(t.key)}
-                className={`px-6 py-2 rounded-full border-2 text-lg font-semibold transition-colors ${tab === t.key ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-gray-200 text-gray-700 hover:bg-blue-600 hover:text-white'}`}
+                className={`px-6 py-2 rounded-full border-2 text-lg font-semibold transition-colors ${tab === t.key ? 'bg-primary border-primary text-white' : 'bg-white border-gray-200 text-gray-700 hover:bg-primary hover:text-white'}`}
               >
                 {t.category}
               </button>
@@ -30,7 +30,7 @@ export default function SolutionList({ solutions }: SolutionListProps) {
       </div>
 
       <div className="text-center text-gray-600 mb-[48px]">
-        <p className="whitespace-pre-wrap">{activeSolution?.desc}</p>
+        <p className="whitespace-pre-wrap text-[14px]">{activeSolution?.desc}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">

@@ -81,7 +81,7 @@ const FeedbackModal = ({ onClose }: FeedbackModalProps) => {
                   id="name"
                   value={form.name}
                   onChange={handleChange}
-                  className={`w-full p-3 bg-gray-100 rounded border ${errors.name ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  className={`w-full p-3 bg-gray-100 rounded border ${errors.name ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-primary`}
                 />
                 {errors.name && <p className="text-red-500 text-xs mt-[4px]">{errors.name}</p>}
               </div>
@@ -94,7 +94,7 @@ const FeedbackModal = ({ onClose }: FeedbackModalProps) => {
                   id="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className={`w-full p-3 bg-gray-100 rounded border ${errors.phone ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  className={`w-full p-3 bg-gray-100 rounded border ${errors.phone ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-primary`}
                 />
                 {errors.phone && <p className="text-red-500 text-xs mt-[4px]">{errors.phone}</p>}
               </div>
@@ -107,14 +107,14 @@ const FeedbackModal = ({ onClose }: FeedbackModalProps) => {
                   rows={4}
                   value={form.message}
                   onChange={handleChange}
-                  className={`w-full p-3 bg-gray-100 rounded border ${errors.message ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-blue-600`}
+                  className={`w-full p-3 bg-gray-100 rounded border ${errors.message ? 'border-red-400' : 'border-gray-200'} focus:outline-none focus:ring-2 focus:ring-primary`}
                 ></textarea>
                 {errors.message && <p className="text-red-500 text-xs mt-[4px]">{errors.message}</p>}
               </div>
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-blue-600 text-black font-bold py-[12px] px-[40px] rounded-full hover:bg-blue-700 transition-colors"
+                  className="bg-primary text-black font-bold py-[12px] px-[40px] rounded-full hover:bg-blue-700 transition-colors"
                   disabled={loading}
                 >
                   {loading ? '发送中...' : '发送'}

@@ -17,13 +17,13 @@ export default async function Home() {
       {/* 四大核心业务 Section */}
       <section className="py-[96px] bg-white">
           <div className="container mx-auto px-[16px]">
-              <SectionTitle title="四大核心业务" />
+              <SectionTitle title="四大核心业务" className="mb-[48px]" />
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[48px]">
                   {data.coreBusinesses.map((business, index) => (
-                      <div key={index} className="text-center p-[32px] rounded-lg hover:shadow-xl transition-shadow duration-300">
-                          <div className="p-[16px] inline-block bg-cyan-100/50 rounded-full mb-[16px] overflow-hidden">
-                              <img src={business.icon} className="w-[72px] h-[72px]" />
-                          </div>
+                                              <div key={index} className="text-center p-[32px] rounded-lg hover:shadow-xl transition-shadow duration-300 group">
+                            <div className="p-[16px] inline-block bg-cyan-100/50 rounded-full mb-[16px] overflow-hidden">
+                                <img src={business.icon} className="w-[72px] h-[72px] transition-transform duration-300 ease-in-out group-hover:scale-110" />
+                            </div>
                           <h3 className="text-[24px] font-semibold mb-[8px] text-[#141414]">{business.title}</h3>
                           <p className="text-[16px] text-[#141414] leading-[1.75] font-normal">{business.description}</p>
                       </div>
@@ -101,7 +101,7 @@ export default async function Home() {
             <div>
               <div className="text-left">
                 <h2 className="text-[36px] font-semibold text-[#141414]">关于我们</h2>
-                <div className="mt-[16px] w-[80px] h-[2px] bg-blue-600 mb-[24px]"></div>
+                <div className="mt-[16px] w-[80px] h-[2px] bg-primary mb-[24px]"></div>
               </div>
               <p className="text-[#141414] text-[16px] leading-[1.75] mb-[200px]">
                 上海耒石网络科技有限公司成立于2020年12月17日，主营业务为信息安全、网络技术研究发展、系统集成服务、弱电工程等。拥有丰富的项目经验和技术，以及雄厚的售后服务实力，为用户提供网络平台、系统平台、应用平台等全方位、高品质、有效的整体性技术服务，服务对象涉及政府、卫生、教育、企业等行业。

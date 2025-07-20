@@ -28,14 +28,14 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, className = '
   return (
     <button
       ref={btnRef}
-      className={`relative overflow-hidden px-6 py-2 rounded-[10px] border border-blue-600 text-blue-600 font-semibold transition-colors duration-300 cursor-pointer ${className}`}
+              className={`relative overflow-hidden px-6 py-2 rounded-full border border-primary text-primary font-semibold transition-colors duration-300 cursor-pointer ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       {...props}
     >
       {/* 背景动画层 */}
       <span
-        className="animated-btn-bg absolute left-0 top-0 h-full w-full bg-blue-600 z-0"
+        className="animated-btn-bg absolute left-0 top-0 h-full w-full bg-primary z-0"
         aria-hidden="true"
       />
       {/* 内容层 */}

@@ -30,7 +30,7 @@ const Footer = () => {
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="mt-[12px] px-6 py-2 rounded-full font-semibold text-base transition-colors duration-300 bg-blue-600 text-white cursor-pointer flex items-center justify-center"
+                className="mt-[12px] px-6 py-2 rounded-full font-semibold text-base transition-colors duration-300 bg-primary text-white cursor-pointer flex items-center justify-center"
               >
                 <MessageIcon />
                 <span className="ml-[4px]">线上留言</span>
@@ -39,20 +39,20 @@ const Footer = () => {
             <div className="w-full md:w-[400px] lg:w-[400px]/5">
               <ul className="space-y-4 text-gray-300">
                 <li className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] mt-[4px] text-blue-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] mt-[4px] text-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 20l-4.95-5.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
                   <span>地址： 上海市杨浦区抚顺路360号</span>
                 </li>
                 <li className="flex items-center">
-                   <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] text-blue-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] text-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2.003 5.884L10 10.884l7.997-5V5.884l-7.997 5-7.997-5V5.884z" />
                     <path fillRule="evenodd" d="M18 5H2a2 2 0 00-2 2v8a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2zM2 7v8h16V7l-8 5-8-5z" clipRule="evenodd" />
                   </svg>
                   <span>邮箱： wuz@lshinet.com.cn</span>
                 </li>
                 <li className="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] text-blue-600 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-[24px] w-[24px] mr-[12px] text-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.759a11.024 11.024 0 005.176 5.176l.76-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2a13 13 0 01-13-13V3z" />
                   </svg>
                   <span>电话： 176 0934 7716</span>

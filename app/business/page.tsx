@@ -17,15 +17,15 @@ export default async function BusinessPage() {
                 <div className="container mx-auto w-[1120px]">
                     <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto">
                         <div className="text-center mb-[16px]">
-                            <div className="text-[24px] font-semibold text-primary mb-2">ICT集成业务架构</div>
+                            <div className="text-[24px] font-semibold text-blue-500 mb-2">ICT集成业务架构</div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-[10px]">
                             {data.ict.map((item, i) => (
                                 <div className="bg-[#F7FAFE] rounded-xl p-[16px] flex flex-col items-center" key={i}>
-                                    <div className="text-primary font-bold text-[24px] mb-4">{item.category}</div>
+                                    <div className="text-blue-500 font-bold text-[24px] mb-4">{item.category}</div>
                                     <div className="flex flex-col gap-3 w-full">
                                         {item.subCategories.map(subcate => (
-                                            <div className="bg-[#E6F2FE] text-primary rounded-lg py-2 text-center text-base font-normal" key={subcate}>{subcate}</div>
+                                            <div className="bg-[#E6F2FE] text-blue-500 rounded-lg py-2 text-center text-base font-normal" key={subcate}>{subcate}</div>
                                         ))}
                                     </div>
                                 </div>
@@ -41,31 +41,31 @@ export default async function BusinessPage() {
                     <SectionTitle title="信息安全" className="mb-[48px]" />
                     <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto w-[1120px] overflow-hidden">
                         {/* 顶部大标题 */}
-                        <div className="w-full h-[49px] leading-[49px] bg-blue-600 text-white text-center text-lg md:text-xl font-bold rounded-xl mb-4">{data.infoSecurity.title}</div>
+                        <div className="w-full h-[49px] leading-[49px] bg-blue-500 text-white text-center text-lg md:text-xl font-bold rounded-xl mb-4">{data.infoSecurity.title}</div>
                         
                         {/* 体系 */}
                         <div className="flex items-center justify-between gap-[10px]">
                             {data.infoSecurity.subtitles.map(subtitle => (
-                                <div className="h-[54px] leading-[54px] bg-[#E6F2FE] text-primary rounded-lg text-center text-[20px] font-semibold flex-1" key={subtitle}>{subtitle}</div>
+                                <div className="h-[54px] leading-[54px] bg-blue-200/50 text-blue-500 rounded-lg text-center text-[20px] font-semibold flex-1" key={subtitle}>{subtitle}</div>
                             ))}
                         </div>
 
                         {/* 体系与方案内容 */}
-                        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 rounded-2xl bg-[#E6F2FE] my-[16px] p-[16px]">
+                        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 rounded-2xl bg-blue-200/50 my-[16px] p-[16px]">
                             {/* 安全策略体系 */}
                             {data.infoSecurity.solutions.map((item, i) => (
-                                <div key={i} className="h-[45px] leading-[45px] bg-[#E6F2FE] text-primary rounded-lg text-center text-sm font-medium">{item}</div>
+                                <div key={i} className="h-[45px] leading-[45px] bg-blue-200/50 text-blue-500 rounded-lg text-center text-sm font-medium">{item}</div>
                             ))}
                         </div>
 
                         {/* 安全组织体系 */}
                         <div className="flex gap-[16px]">
                             {data.infoSecurity.categories.map(item => (
-                                <div className="bg-[#E6F2FE] p-[16px] rounded-xl flex flex-col items-center flex-1" key={item.category}>
-                                    <div className="bg-blue-600 w-full text-white h-[49px] leading-[49px] text-[20px] font-semibold rounded-2xl text-center mb-[16px]">{item.category}</div>
+                                <div className="bg-blue-200/50 p-[16px] rounded-xl flex flex-col items-center flex-1" key={item.category}>
+                                    <div className="bg-blue-500 w-full text-white h-[49px] leading-[49px] text-[20px] font-semibold rounded-2xl text-center mb-[16px]">{item.category}</div>
                                     <div className="flex flex-col gap-2 w-full">
                                         {item.subCategories.map(subcate => (
-                                            <div className="text-primary text-[14px] leading-[1.5] text-center" key={subcate}>{subcate}</div>
+                                            <div className="text-blue-500 text-[14px] leading-[1.5] text-center" key={subcate}>{subcate}</div>
                                         ))}
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@ export default async function BusinessPage() {
                     <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto mt-[16px] w-[1120px]">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {data.infoSecurity.services.map(service => (
-                                <div className="bg-blue-600 text-white rounded-lg h-[49px] leading-[49px] text-[20px] text-center font-semibold" key={service}>{service}</div>
+                                <div className="bg-blue-500 text-white rounded-lg h-[49px] leading-[49px] text-[20px] text-center font-semibold" key={service}>{service}</div>
                             ))}
                         </div>
                     </div>
@@ -113,11 +113,11 @@ export default async function BusinessPage() {
                 <div className="container mx-auto px-[16px]">
                     <SectionTitle title="运维服务" subtitle="驻场服务、安全巡检、系统调优、设备维保等技术服务" className="mb-[48px]" />
                     <div className="flex flex-wrap justify-center gap-[32px]">
-                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-blue-600">
+                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-primary">
                             <p className="text-4xl font-bold">5 * 8 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">常规运维</p>
                         </div>
-                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-blue-600">
+                        <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-primary">
                             <p className="text-4xl font-bold">7 * 24 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">应急运维</p>
                         </div>

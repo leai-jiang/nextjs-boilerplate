@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #94cc29;
+}
+
 @font-face {
   font-family: 'Lobster Two';
   src: url('/fonts/LobsterTwo/LobsterTwo-Regular.ttf') format('truetype');
@@ -35,7 +39,9 @@
 }
 
 body {
-  font-family: PingFang SC;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-family: PingFangSC-Regular, HelveticaNeue-Light, Helvetica Neue Light, Microsoft YaHei, "sans-serif";
 }
 
 /* AnimatedButton 动画样式 */
@@ -51,7 +57,7 @@ body {
 }
 
 .animated-btn-text {
-  color: #2563eb; /* tailwind blue-600 */
+  color: #94cc29; /* tailwind primary */
   transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 .animated-btn-hover .animated-btn-text {

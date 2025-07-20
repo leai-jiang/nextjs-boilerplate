@@ -33,10 +33,10 @@ const Header = () => {
                 <Link
                   href={link.href}
                   className={`px-3 py-2 rounded-md text-base text-[16px] font-medium transition-colors duration-300 relative group
-                    ${pathname === link.href ? 'text-blue-600' : 'text-[#141414] hover:text-blue-600'}`}
+                    ${pathname === link.href ? 'text-primary' : 'text-[#141414] hover:text-primary'}`}
                 >
                   {link.label}
-                  <span className="absolute left-[14px] bottom-[4px] w-2/3 h-[1px] bg-gradient-to-r from-blue-200 to-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"></span>
+                  <span className="absolute left-[14px] bottom-[4px] w-2/3 h-[1px] bg-gradient-to-r from-blue-200 to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"></span>
                 </Link>
               </li>
             ))}
@@ -72,8 +72,8 @@ const Header = () => {
                       href={link.href}
                       className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
                         pathname === link.href
-                          ? 'text-blue-600'
-                          : 'text-[#141414] hover:text-blue-600'
+                                  ? 'text-primary'
+        : 'text-[#141414] hover:text-primary'
                       }`}
                       onClick={() => setMobileOpen(false)}
                     >
