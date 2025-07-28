@@ -4,8 +4,7 @@ export interface ProjectCase {
   title: string;
   imageUrl: string;
   detail: {
-    background: string;
-    process: string;
+    content: string;
   }
 };
 

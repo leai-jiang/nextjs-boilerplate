@@ -1,19 +1,16 @@
-interface ProjectCase {
+interface NewsItem {
   title: string;
-  imageUrl: string;
-  detail: {
-    content: string;
-  }
+  desc: string;
 }
 
-interface CaseDetailModalProps {
+interface NewsModalProps {
   visible: boolean;
   onClose: () => void;
-  caseItem: ProjectCase | null;
+  newsItem: NewsItem | null;
 }
 
-const  CaseDetailModal = ({ visible, onClose, caseItem }: CaseDetailModalProps) => {
-  if (!visible || !caseItem) return null;
+const  NewsModal = ({ visible, onClose, newsItem }: NewsModalProps) => {
+  if (!visible || !newsItem) return null;
   
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
@@ -26,11 +23,10 @@ const  CaseDetailModal = ({ visible, onClose, caseItem }: CaseDetailModalProps) 
           ×
         </button>
         <div className="overflow-y-auto max-h-[700px] rounded-t-2xl">
-          <img src={caseItem.imageUrl} alt={caseItem.title} width={600} height={240} className="w-full h-[192px] object-cover" />
         
           <div className="p-[20px]">
-            <h2 className="text-xl font-bold mb-[12px]">案例详情</h2>
-            <div className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: caseItem.detail.content }} />
+            <h2 className="text-xl font-bold mb-[12px]">{newsItem.title}</h2>
+            <div className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: newsItem.desc }} />
           </div>
         </div>
       </div>
@@ -38,4 +34,4 @@ const  CaseDetailModal = ({ visible, onClose, caseItem }: CaseDetailModalProps) 
   );
 }
 
-export default CaseDetailModal;
+export default NewsModal;

@@ -15,21 +15,37 @@ export default async function BusinessPage() {
             <section className="py-[96px]">
                 <SectionTitle title="ICT集成" className="mb-[48px]" />
                 <div className="container mx-auto w-[1120px]">
-                    <div className="bg-white rounded-2xl border-2 border-dashed border-[#B6D9F7] p-[16px] mx-auto">
-                        <div className="text-center mb-[16px]">
-                            <div className="text-[24px] font-semibold text-blue-500 mb-2">ICT集成业务架构</div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-[10px]">
-                            {data.ict.map((item, i) => (
-                                <div className="bg-[#F7FAFE] rounded-xl p-[16px] flex flex-col items-center" key={i}>
-                                    <div className="text-blue-500 font-bold text-[24px] mb-4">{item.category}</div>
-                                    <div className="flex flex-col gap-3 w-full">
-                                        {item.subCategories.map(subcate => (
-                                            <div className="bg-[#E6F2FE] text-blue-500 rounded-lg py-2 text-center text-base font-normal" key={subcate}>{subcate}</div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
+                    <div className="bg-white mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                          {data.ict.map((item, idx) => (
+                            <div key={idx} className="flex flex-col items-center bg-white h-full">
+                              <div className="w-full h-[160px] flex items-center justify-center mb-4">
+                                <Image
+                                  src={item.image}
+                                  alt={item.title}
+                                  width={300}
+                                  height={160}
+                                  className="object-cover w-full h-full"
+                                />
+                              </div>
+                              <div className="text-lg font-semibold text-gray-800 text-center mb-2">{item.title}</div>
+                              <div className="relative border-b border-gray-300 w-full h-[0.5px] before:content-[''] before:block before:w-8 before:h-[2px] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-red-500 before:rounded-sm before:mr-2 mb-4"/>
+                              <div className="flex w-full px-2 gap-2">
+                                <ul className="flex-1 text-gray-600 text-sm">
+                                  {item.descs.slice(0, 4).map((desc, i) => (
+                                    <li key={i} className="mb-1">· {desc}</li>
+                                  ))}
+                                </ul>
+                                {item.descs.length > 4 && (
+                                  <ul className="flex-1 text-gray-600 text-sm">
+                                    {item.descs.slice(4).map((desc, i) => (
+                                      <li key={i} className="mb-1">· {desc}</li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            </div>
+                          ))}
                         </div>
                     </div>
                 </div>
@@ -121,6 +137,7 @@ export default async function BusinessPage() {
                             <p className="text-4xl font-bold">7 * 24 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">应急运维</p>
                         </div>
+                        <img src="/business_yunwei.jpg" alt="运维服务" className="rounded-xl w-full border border-primary" />
                     </div>
                 </div>
             </section>
@@ -150,52 +167,24 @@ async function fetchPageData(): Promise<{ data: PageDataType }> {
             },
             ict: [
                 {
-                    category: "网络",
-                    subCategories: [
-                        "Wi-Fi无线",
-                        "园区网络",
-                        "数据中心网络",
-                        "SD-WAN",
-                        "SDN网络",
-                        "光网络",
-                        "网络监控与管理",
-                    ]   
+                    image: "/business_ict_1.jpg",
+                    title: "网络",
+                    descs: ["无线", "园区网络", "数据中心网络", "基础架构建设", "网络优化", "SD-WAN"],
                 },
                 {
-                    category: "IT&云视频",
-                    subCategories: [
-                        "服务器",
-                        "存储",
-                        "虚拟化",
-                        "桌面云",
-                        "超融合",
-                        "云计算平台",
-                        "大数据平台",
-                    ]   
+                    image: "/business_ict_2.jpg",
+                    title: "IT",
+                    descs: ["服务器", "存储", "虚拟化", "超融合", "桌面云", "云计算", "数据库"],
                 },
                 {
-                    category: "视频监控&智能协作",
-                    subCategories: [
-                        "摄像机",
-                        "视频云",
-                        "智能视频",
-                        "视频监控",
-                        "云视频",
-                        "智慧屏",
-                        "视频会议",
-                    ]   
+                    image: "/business_ict_3.jpg",
+                    title: "智能协作",
+                    descs: ["摄像机", "视频云", "智能视频", "监控", "视频会议"],
                 },
                 {
-                    category: "智能终端",
-                    subCategories: [
-                        "台式机",
-                        "笔记本",
-                        "平板",
-                        "打印机",
-                        "智能穿戴",
-                        "智能音箱",
-                        "智能产品",
-                    ]   
+                    image: "/business_ict_4.jpg",
+                    title: "智能终端",
+                    descs: ["台式机", "笔记本", "平板", "打印机", "投影仪", "智能音响"],
                 },
             ],
             infoSecurity: {

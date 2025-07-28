@@ -3,8 +3,9 @@ import { BannerType } from "../type";
 export interface PageDataType {
   banner: BannerType;
   ict: {
-    category: string;
-    subCategories: string[];
+    image: string;
+    title: string;
+    descs: string[];
   }[];
   infoSecurity: {
     title: string;
