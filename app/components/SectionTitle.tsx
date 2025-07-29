@@ -14,7 +14,7 @@ const SectionTitle = ({ title, subtitle, className = '' }: SectionTitleProps) =>
   const inView = useInView(ref, { once: false, margin: '-40px' });
 
   return (
-    <div className={`text-center ${className}`} ref={ref}>
+    <div className={`text-center max-w-[1120px] mx-auto ${className}`} ref={ref}>
       <h2 className="text-[36px] font-semibold text-[#141414]">{title}</h2>
       <motion.div
         className="mt-[2px] w-[80px] h-[2px] bg-gradient-to-r from-blue-200 to-primary mx-auto"
@@ -23,7 +23,7 @@ const SectionTitle = ({ title, subtitle, className = '' }: SectionTitleProps) =>
         transition={{ duration: 0.7, ease: 'easeOut' }}
         style={{ originX: 0 }}
       />
-      {subtitle && <p className="mt-[24px] text-[#141414] font-[16px] leading-[1.75]">{subtitle}</p>}
+      {subtitle && <p className="mt-[24px] px-[48px] text-[#141414] font-[16px] leading-[1.75]">{subtitle}</p>}
     </div>
   );
 };

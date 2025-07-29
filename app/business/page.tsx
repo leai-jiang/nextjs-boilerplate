@@ -127,8 +127,8 @@ export default async function BusinessPage() {
             {/* 运维服务 Section */}
             <section className="py-[96px]">
                 <div className="container mx-auto px-[16px]">
-                    <SectionTitle title="运维服务" subtitle="驻场服务、安全巡检、系统调优、设备维保等技术服务" className="mb-[48px]" />
-                    <div className="flex flex-wrap justify-center gap-[32px]">
+                    <SectionTitle title="运维服务" subtitle="公司可提供安全运维、网络运维、集成服务、安全服务等。公司建立完善的服务制度和专业的运维服务团队；整合运维服务资源，规范运维行为，确保服务质效，形成统一管理、集约高效的一体化运维服务质量保障体系，从而保障设备安全、稳定、高效、持续的运行。" className="mb-[48px]" />
+                    <div className="flex flex-wrap justify-center gap-[32px] w-[1120px] mx-auto">
                         <div className="p-[40px] rounded-xl text-center w-[320px] shadow-lg transition-transform hover:scale-105 text-primary">
                             <p className="text-4xl font-bold">5 * 8 <span className="text-2xl">小时</span></p>
                             <p className="mt-[8px]">常规运维</p>
