@@ -46,6 +46,9 @@ const Footer = () => {
                   </svg>
                   <span>邮箱： hr@lshinet.com.cn</span>
                 </li>
+                <li className="flex items-center">
+		  <span>ICP备案号：沪ICP备2025139935号</span>
+		</li>
               </ul>
             </div>
           </div>
