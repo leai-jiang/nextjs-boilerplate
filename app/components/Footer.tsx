@@ -47,8 +47,14 @@ const Footer = () => {
                   <span>邮箱： hr@lshinet.com.cn</span>
                 </li>
                 <li className="flex items-center">
-		  <span>ICP备案号：沪ICP备2025139935号</span>
-		</li>
+                  <span>ICP备案号：沪ICP备2025139935号</span>
+                </li>
+                <li>
+                  <a className="flex items-center" href="https://beian.mps.gov.cn/#/query/webSearch?code=31011002007682" rel="noreferrer" target="_blank">
+                    <img src="/beian.png"></img>
+                    <span>沪公网安备31011002007682号</span>
+                  </a >
+                </li>
               </ul>
             </div>
           </div>
